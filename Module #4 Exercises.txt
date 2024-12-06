@@ -1,0 +1,75 @@
+Example 1:
+#!/bin/bash
+
+# Function to output an error message and exit
+fatal() {
+    echo "ERROR: $*" >&2
+    echo "Usage: $(basename "$0") { -a | -b } file" >&2
+    exit 1
+}
+
+# Check the number of arguments
+[ $# -ne 2 ] && fatal "Exactly two arguments required."
+
+# Check if the first argument is -a or -b
+if [ "$1" != "-a" ] && [ "$1" != "-b" ]; then
+    fatal "First argument must be -a or -b."
+fi
+
+# Check if the second argument is a readable file
+if [ ! -f "$2" ] || [ ! -r "$2" ]; then
+    fatal "Second argument ('$2') must be a readable file."
+fi
+
+echo "Arguments are valid."
+
+Example 2: 
+if grep "$user" file1 > /dev/null 2>&1; then
+    echo "'$user' found"
+fi
+
+ The [ ] is the test command and is not intended to run grep. This will cause an error 
+
+
+if grep "$user" file1 > /dev/null 2>&1; then
+    echo "'$user' found"
+fi
+
+The command substitution $() substitutes the output of grep as a command, which will fail.
+
+Example 3:
+A)
+if [ -f "$file" ] && [ -r "$file" ]; then
+    cat "$file"
+else
+    echo "$file is not a readable file"
+fi
+B)
+grep "JoAnne" "$file" || echo "JoAnne was not in $file"
+
+
+Example 4: 
+#!/bin/bash
+
+# Parse the output of date into positional parameters
+set -- $(date)
+
+# Get the month, day, and year
+case "$2" in
+    [Jj]an) mon=01;;
+    [Ff]eb) mon=02;;
+    [Mm]ar) mon=03;;
+    [Aa]pr) mon=04;;
+    [Mm]ay) mon=05;;
+    [Jj]un) mon=06;;
+    [Jj]ul) mon=07;;
+    [Aa]ug) mon=08;;
+    [Ss]ep) mon=09;;
+    [Oo]ct) mon=10;;
+    [Nn]ov) mon=11;;
+    [Dd]ec) mon=12;;
+    *) echo "ERROR: Unknown month '$2'"; exit 1;;
+esac
+
+# Output the date in MM/DD/YYYY format
+echo "$mon/$3/$6"

@@ -1,0 +1,80 @@
+1) 
+echo -e "Would you like a hello prompt? (y/n) -->\c"
+read ANSWER
+if [ $ANSWER = "y" -o $ANSWER = "Y" ]
+then
+PS1="Hello There: "
+fi
+Whenever a user logs in, the script in .bash_profile is executed. Then it prompts the user: "Would you like a hello prompt? (y/n)" If the user enters y or Y, the prompt (PS1) is changed to Hello There: alternatively, the default prompt remains.
+
+2)
+The script in .bash_profile checks if the user's input is y or Y. If true, it sets the PS1 environment variable to the custom prompt.
+
+3)
+echo $MYVAR: Displays My sample variable.
+set | grep MYVAR: Lists the variable because it exists the current shell.
+env | grep MYVAR: MYVAR is not listed because it is not exported (not part of the environment variables). After exporting MYVAR, it appears in env because the variable is now part of the environment.
+
+4)
+If you add export MYVAR="My sample variable" to .bash_profile, the variable will be automatically set and exported whenever you log in.
+
+5)
+alias asample="cd /etc ; cat hosts ; cd ~ ; ls -F"
+First it creates an alias named asample that:
+Changes directory to /etc.
+Displays the contents of the hosts file.
+Returns to the home directory.
+Lists files and directories in the home directory with indicators (-F).
+Add the alias to .bashrc to make it available every time a new BASH shell is created.
+
+6)
+#!/bin/bash
+echo -e "This is a sample shell script. \t It displays mounted filesystems: \a"
+df -hT
+ls -l myscript will show the file's default permissions.
+The script won't execute with ./myscript initially because it does not have execution permission. After chmod u+x myscript, it runs.
+\t: Inserts a tab.
+\a: Triggers a bell sound.
+
+7)
+What permissions does the file have initially?
+The file initially has rw-r--r--, meaning it is not executable.
+
+Did the script execute when run with bash myscript?
+Yes, because bash explicitly invokes the interpreter.
+
+What do \t and \a do?
+\t adds a horizontal tab, and \a triggers a bell sound (if supported).
+
+What error message appears when running ./myscript initially?
+"Permission denied" because the script lacked execute permissions.
+
+What happens after running chmod u+x myscript and ./myscript?
+The script executes successfully because it now has execute permissions
+
+8)
+Without a parameter, it prints an error: "Usage is ./dirbackup.sh <directory to back up>".
+With a parameter like /etc/samba, it creates backupfile.tar.gz.
+
+9)
+What happens when running ./dirbackup.sh without a parameter?
+You receive an error (e.g., "No positional parameter provided") because the script requires a directory path.
+
+What happens when running ./dirbackup.sh /etc/samba?
+A backup of the /etc/samba directory is created as backupfile.tar.gz in your home directory.
+
+What do you see when you run ls -F?
+If the backup was successful, you'll see backupfile.tar.gz listed.
+
+Was backupfile.tar.gz created successfully?
+Yes, if it appears in the ls -F output.
+
+10)
+Prompts the user for a directory.
+Creates a backup with a filename that includes the directory name and date.
+
+11)Done look at dirbackup.sh
+
+12)Done look at the familydatabase.sh file.
+
+13)Done Look at the Screenshot named familydatabaseOUTPUT

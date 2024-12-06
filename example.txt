@@ -1,0 +1,29 @@
+Welcome to the system log file. This file is used to track system events and user activity.
+
+[INFO] 2024-12-02 10:00:00 - User John logged into the system successfully.
+[DEBUG] 2024-12-02 10:15:32 - Attempting to load configuration settings...
+[ERROR] 2024-12-02 10:16:45 - Failed to connect to the database. Error code: 504.
+[WARNING] 2024-12-02 10:18:00 - Disk space running low on /dev/sda1.
+[INFO] 2024-12-02 10:20:12 - Backup process started successfully.
+[INFO] 2024-12-02 10:25:00 - User Alice logged into the system successfully.
+
+Search for `404` if you're looking for web server errors:
+127.0.0.1 - - [02/Dec/2024:10:30:45 +0000] "GET /index.html HTTP/1.1" 404 1024
+127.0.0.1 - - [02/Dec/2024:10:31:00 +0000] "POST /login HTTP/1.1" 200 512
+127.0.0.1 - - [02/Dec/2024:10:31:30 +0000] "GET /about.html HTTP/1.1" 404 768
+
+Searching for user activity? Here’s more:
+[INFO] 2024-12-02 10:35:00 - User John attempted to change password but failed.
+[ERROR] 2024-12-02 10:40:00 - Password reset failed. User John does not meet complexity requirements.
+[INFO] 2024-12-02 10:50:00 - User Alice logged out.
+
+Searching for system errors? See the following:
+[ERROR] 2024-12-02 10:55:00 - Kernel panic: Fatal error in module xyz. Stack trace:
+- Function A: Line 123
+- Function B: Line 456
+[INFO] 2024-12-02 11:00:00 - System rebooted successfully.
+
+Miscellaneous info for testing:
+[DEBUG] 2024-12-02 11:05:00 - Memory allocation successful.
+[WARNING] 2024-12-02 11:10:00 - High CPU usage detected: 90% on process ID 101.
+[ERROR] 2024-12-02 11:15:00 - Application crash detected: AppName.exe.

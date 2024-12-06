@@ -1,0 +1,35 @@
+CHAPTER 7
+
+1)The $1 variable not $@, the function will return the first element only.
+
+2) 50 and it's a global variable, but because we printed the value before the function call, the variable isn't affected.
+
+3)clean_file() {
+    is_file "$1"
+    BEFORE=$(wc -l < "$1")  # Extract only the line count
+    echo "The file $1 starts with $BEFORE lines"
+    sed -i.bak '/^\s*#/d;/^$/d' "$1"  # Remove blank lines and comments
+    AFTER=$(wc -l < "$1")  # Extract only the line count
+    echo "The file $1 is now $AFTER lines"
+}
+
+4)#!/bin/bash
+myfunc() {
+    # Properly copy the array to avoid confusion
+    local arr=("$@")
+    echo "The array from inside the function: ${arr[*]}"
+}
+
+test_arr=(1 2 3)
+echo "The original array is: ${test_arr[*]}"
+myfunc "${test_arr[@]}"  # Pass all elements of the array to the function
+
+CHAPTER 8
+
+1)No lines will be substituted. The substitution command is case-sensitive, and there are no matches for Sed in the file.
+
+2)One line (line 2) will be deleted.The 2d command deletes the second line of the file. This command operates on line numbers, so the second line will be removed.
+
+3)One line (line 2) will be deleted.The 3a\Example text command appends the text "Example text" after line 3 of the file. This means the inserted text will be added immediately after the third line.
+
+4) Only 1 line (the inserted line inserted text) will be saved to the outputfile.2i\inserted text command inserts the line inserted text before line 2 of the file. The /w outputfile part writes the modified content to the outputfile. Since this is a single insertion command, only the newly added line (inserted text) is written to outputfile.
